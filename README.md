@@ -83,16 +83,20 @@ You can now view your Streamlit app in your browser.
   Network URL: http://192.168.X.XXX:8501
 ```
 
-Open the `Local URL` in your web browser to interact with the app.
+Open the Local URL in your web browser to interact with the app.
 
-## **Using the App**
+### **Using the App**
 
-1. **Upload a Food Image**: Click on "Choose a food image" and select an image (`jpg`, `jpeg`, or `png`).
+1. **Upload a Food Image**: Click on "Choose a food image" and select an image (jpg, jpeg, or png).
 2. **View Uploaded Image**: The app will display the image you've uploaded.
 3. **Ingredient Prediction**: The app processes the image and predicts the ingredients.
 4. **Select Chef Model**: Choose between "Chef Scheherazade" or "Chef Giovanni" for different recipe styles.
 5. **Generate Recipe**: Click on "Get Recipe!" to generate the recipe.
 6. **View Recipe**: The app will display the recipe title, ingredients list, and cooking instructions.
+
+## **Screenshots**
+
+<!-- Replace with actual screenshot path -->
 
 ## **Project Structure**
 
@@ -113,10 +117,6 @@ Recipe-Generation-from-Food-Image/
 │   ├── encoder.py                # CNN encoder modules
 │   ├── multihead_attention.py    # Attention mechanisms
 │   └── transformer_decoder.py    # Transformer decoder modules
-├── static/
-│   ├── css/
-│   │   └── style.css             # Stylesheets
-│   └── images/                   # Static images for the app
 ├── utils/
 │   ├── api.py                    # API utilities
 │   ├── draw.py                   # Image drawing utilities
@@ -136,51 +136,93 @@ pip install -r requirements.txt
 
 Key dependencies include:
 
-- **Streamlit**: For building the web interface.
-- **PyTorch**: Deep learning framework for model implementation.
-- **Transformers**: For utilizing Transformer models.
-- **Pillow**: Image processing.
-- **Torchvision**: For image transformations and pre-trained models.
+- Streamlit: For building the web interface.
+- PyTorch: Deep learning framework for model implementation.
+- Transformers: For utilizing Transformer models.
+- Pillow: Image processing.
+- Torchvision: For image transformations and pre-trained models.
+
+## **Performance Tips**
+
+- **Use GPU**: If your system supports GPU acceleration, PyTorch will automatically leverage it for faster model inference.
+- **Run on Cloud**: You can deploy this app on platforms like Heroku, AWS, or Google Cloud for production-level scaling.
+- **Batch Processing**: For processing multiple images at once, consider batching inputs to optimize performance.
 
 ## **Troubleshooting**
 
 ### **Common Errors and Solutions**
 
 - **ModuleNotFoundError**: If you encounter errors about missing modules, ensure that all dependencies are installed and that your Python environment is correctly set up.
-
 - **FileNotFoundError for Model Files**: Verify that `modelbest.ckpt`, `ingr_vocab.pkl`, and `instr_vocab.pkl` are placed in the correct directory (`Foodimg2Ing/data/`).
-
 - **AttributeError in Streamlit**: If you receive errors like `'NoneType' object has no attribute 'format'`, ensure that the image generation function returns a valid image URL or handle cases where the image may be `None`.
-
 - **CUDA Errors**: If you encounter CUDA-related warnings and you don't have a GPU or prefer to run on CPU, you can disable CUDA by setting the environment variable before running the app:
 
-  ```bash
-  export CUDA_VISIBLE_DEVICES=-1
-  ```
+```bash
+export CUDA_VISIBLE_DEVICES=-1
+```
 
-- **Port Already in Use**: If Streamlit indicates that the default port `8501` is in use, specify a different port:
+- **Port Already in Use**: If Streamlit indicates that the default port 8501 is in use, specify a different port:
 
-  ```bash
-  streamlit run app.py --server.port 8502
-  ```
+```bash
+streamlit run app.py --server.port 8502
+```
+
+## **Future Enhancements**
+
+- **Real-time Recipe Adjustments**: Dynamically adjust recipes based on user preferences or dietary restrictions.
+- **Cultural Integration**: Tailor recipes based on regional or cultural preferences.
+- **Voice Commands**: Allow users to upload images and get recipes via voice commands.
+- **Mobile App**: Convert the web app to a mobile app for easier accessibility.
+
+## **Deploying to Heroku**
+
+You can easily deploy this app to Heroku by following these steps:
+
+1. **Install the Heroku CLI**: https://devcenter.heroku.com/articles/heroku-cli
+2. **Login to Heroku**:
+
+```bash
+heroku login
+```
+
+3. **Create a new Heroku app**:
+
+```bash
+heroku create your-app-name
+```
+
+4. **Push the code**:
+
+```bash
+git push heroku main
+```
+
+For full deployment instructions, visit Heroku's Documentation.
 
 ## **Contributing**
 
 Contributions are welcome! Please open an issue or submit a pull request on GitHub if you have suggestions or improvements.
 
+## **Credits**
+
+This project is built upon the efforts of the following repositories:
+
+- Recipe Generation from Food Image by navassherif98
+- Chef Transformer by chef-transformer
+
 ## **License**
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## **Acknowledgments**
 
-- The model is inspired by the work from [Inverse Cooking: Recipe Generation from Food Images](https://arxiv.org/abs/1812.06164).
+- The model is inspired by the work from Inverse Cooking: Recipe Generation from Food Images.
 - Thanks to the developers of Streamlit for providing an easy way to build web apps.
 
 ## **Contact**
 
 For any inquiries or support, please contact:
 
-- **Ganesh Adimalupu**
-- **Email**: [your_email@example.com](mailto:your_email@example.com)
-- **GitHub**: [GaneshAdimalupu](https://github.com/GaneshAdimalupu)
+- Ganesh Adimalupu
+- Email: your_email@example.com
+- GitHub: GaneshAdimalupu
