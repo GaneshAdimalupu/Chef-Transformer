@@ -1,13 +1,13 @@
 
 # **Be My Chef AI - Recipe Generation from Food Images**
 
-![Be My Chef AI Logo](static/images/logo.png) <!-- Replace with the actual path to your logo image -->
+![Be My Chef AI Logo](asset/Demo images/be my chef.png) <!-- Replace with the actual path to your logo image -->
 
 Are you curious about recreating delicious dishes from just a picture? **Be My Chef AI** is here to help! This project leverages advanced AI models to generate detailed recipes based on food images. By analyzing a picture of a dish, the system predicts the ingredients and provides step-by-step cooking instructions to recreate it.
 
 ## **Demo**
 
-[![Demo Video](static/images/demo.png)](http://localhost:8501) <!-- Replace with a link to your demo video or live app -->
+[![Demo Image](asset/Demo images/be my chef.png)](http://localhost:8501) <!-- Replace with a link to your demo video or live app -->
 
 Upload an image, and watch as the AI generates a complete recipe for you!
 
@@ -56,8 +56,8 @@ cd Recipe-Generation-from-Food-Image
 #### b. **Create and Activate Conda Environment**
 
 ```bash
-conda create -n ganesh python=3.8
-conda activate ganesh
+conda create -n ganesh[your Name] python=3.8
+conda activate ganesh[your Name]
 ```
 
 #### c. **Install Dependencies**
@@ -101,29 +101,116 @@ Open the Local URL in your web browser to interact with the app.
 ## **Project Structure**
 
 ```
-Recipe-Generation-from-Food-Image/
-├── app.py                        # Main Streamlit app file
-├── data/
-│   ├── ingr_vocab.pkl            # Ingredients vocabulary
-│   ├── instr_vocab.pkl           # Instructions vocabulary
-│   └── modelbest.ckpt            # Trained model weights
-├── Foodimg2Ing/
-│   ├── __init__.py
-│   ├── args.py                   # Argument parser
-│   ├── model.py                  # Model architecture
-│   ├── output.py                 # Prediction functions
-│   └── routes.py                 # API routes (if using Flask)
-├── modules/
-│   ├── encoder.py                # CNN encoder modules
-│   ├── multihead_attention.py    # Attention mechanisms
-│   └── transformer_decoder.py    # Transformer decoder modules
-├── utils/
-│   ├── api.py                    # API utilities
-│   ├── draw.py                   # Image drawing utilities
-│   ├── output_utils.py           # Output processing utilities
-│   └── ...                       # Other utility scripts
-├── requirements.txt              # Python dependencies
-└── README.md                     # This file
+├── app.py                          # Main application entry point
+├── asset                           # Directory for static assets (CSS, images, fonts, etc.)
+│   ├── css
+│   │   └── style.css               # Main stylesheet for the web app
+│   ├── Demo images
+│   │   ├── 2.png                   # Sample image for demo purposes
+│   │   └── be my chef.png          # Demo image for the "Be My Chef" feature
+│   ├── fonts
+│   │   ├── Montserrat-Bold.ttf     # Font: Montserrat bold version
+│   │   ├── Montserrat-Regular.ttf  # Font: Montserrat regular version
+│   │   ├── Poppins-Bold.ttf        # Font: Poppins bold version
+│   │   └── Poppins-Medium.ttf      # Font: Poppins medium version
+│   ├── frame
+│   │   ├── export
+│   │   │   └── food-image-logo.png  # Exported food logo image
+│   │   ├── food-image-logo-background.png  # Background for food image logo
+│   │   ├── food-image-logo-bg-g.png        # Green background version of the food logo
+│   │   ├── food-image-logo-bg-s.png        # Silver background version of the food logo
+│   │   ├── food.jpg                       # Food image used in the app
+│   │   ├── logo.png                       # Logo for the app
+│   │   ├── no_food.png                    # Placeholder for when no food is detected
+│   │   └── recipe-bg.png                  # Background image for recipe section
+│   ├── images
+│   │   ├── chef-transformer.png           # Image of chef transformer for UI
+│   │   ├── chef-transformer-transparent.png # Transparent version of the chef transformer image
+│   │   ├── frames                         # Folder containing various frame images for UI
+│   │   │   ├── 10.jpg                     # Frame image 10
+│   │   │   ├── 1.jpg                      # Frame image 1
+│   │   │   ├── 2.jpg                      # Frame image 2
+│   │   │   ├── 3.jpg                      # Frame image 3
+│   │   │   ├── 4.jpg                      # Frame image 4
+│   │   │   ├── 5.jpg                      # Frame image 5
+│   │   │   ├── 6.jpg                      # Frame image 6
+│   │   │   ├── 7.jpg                      # Frame image 7
+│   │   │   ├── 8.jpg                      # Frame image 8
+│   │   │   └── 9.jpg                      # Frame image 9
+│   │   ├── logo.png                       # Logo for the app
+│   │   ├── recipe-frame.png               # Frame used for displaying recipes
+│   │   ├── recipe.jpg                     # Sample recipe image
+│   │   └── recipe-post.png                # Image used for posting recipes
+│   └── Recipe Gen images                  # Folder for images related to recipe generation
+├── chef_transformer                      # Core model-related code
+│   ├── CONTRIBUTING.md                   # Guide for contributing to the project
+│   ├── dummy.py                          # Dummy file for testing
+│   ├── examples.py                       # Example usage of chef_transformer model
+│   ├── meta.py                           # Meta information about the model and its setup
+│   ├── notes
+│   │   └── Build Ingredients Vocab.ipynb # Notebook for building an ingredient vocabulary
+│   ├── __pycache__                       # Compiled Python files (autogenerated)
+│   │   ├── dummy.cpython-38.pyc          # Cached bytecode of dummy.py
+│   │   ├── examples.cpython-38.pyc       # Cached bytecode of examples.py
+│   │   └── meta.cpython-38.pyc           # Cached bytecode of meta.py
+│   ├── README.md                         # Readme file for understanding the module
+│   └── requirements.txt                  # Dependencies required for the chef_transformer module
+├── data                                  # Directory for model data files
+│   ├── ingr_vocab.pkl                    # Pickled ingredient vocabulary
+│   ├── instr_vocab.pkl                   # Pickled instruction vocabulary
+│   └── modelbest.ckpt                    # Model checkpoint for best-performing model
+├── eval                                  # Evaluation-related scripts and files
+│   ├── Chef_Transformer_Evaluation.ipynb # Evaluation notebook for Chef Transformer model
+│   ├── ChefTransformer_predicted.json    # JSON file of Chef Transformer model predictions
+│   ├── RecipeNLG_Evaluation.ipynb        # Evaluation notebook for RecipeNLG model
+│   ├── RecipNLG_predicted.json           # JSON file of RecipeNLG model predictions
+│   └── test-5000.csv                     # Test dataset for model evaluation
+├── Foodimg2Ing                           # Code for converting food images to ingredients
+│   ├── args.py                           # Argument parser for the Foodimg2Ing model
+│   ├── __init__.py                       # Init file for module import
+│   ├── model.py                          # Model definition for Foodimg2Ing
+│   ├── output.py                         # Output processing for Foodimg2Ing results
+│   ├── __pycache__                       # Cached bytecode for the module (autogenerated)
+│   │   ├── args.cpython-38.pyc           # Cached bytecode of args.py
+│   │   ├── __init__.cpython-38.pyc       # Cached bytecode of __init__.py
+│   │   ├── model.cpython-38.pyc          # Cached bytecode of model.py
+│   │   ├── output.cpython-38.pyc         # Cached bytecode of output.py
+│   │   └── routes.cpython-38.pyc         # Cached bytecode of routes.py
+│   └── routes.py                         # API routes for processing images to ingredients
+├── modules                               # Transformer-related core modules
+│   ├── encoder.py                        # Encoder module for the transformer model
+│   ├── multihead_attention.py            # Multi-head attention mechanism
+│   ├── __pycache__                       # Cached bytecode for modules (autogenerated)
+│   │   ├── encoder.cpython-38.pyc        # Cached bytecode of encoder.py
+│   │   ├── multihead_attention.cpython-38.pyc # Cached bytecode of multihead_attention.py
+│   │   ├── transformer_decoder.cpython-38.pyc # Cached bytecode of transformer_decoder.py
+│   │   └── utils.cpython-38.pyc          # Cached bytecode of utils.py
+│   ├── transformer_decoder.py            # Transformer decoder module
+│   └── utils.py                          # Utility functions for the transformer modules
+├── Procfile                              # Process file for deployment (e.g., Heroku)
+├── README.md                             # Project description and setup guide
+├── requirements.txt                      # Dependencies required for the entire project
+└── utils                                 # Miscellaneous utility functions
+    ├── api.py                            # API-related utilities
+    ├── draw.py                           # Utility for drawing or visualizing data
+    ├── ext.py                            # External processing utilities
+    ├── ims2file.py                       # Image-to-file conversion utility
+    ├── __init__.py                       # Init file for module import
+    ├── metrics.py                        # Functions for evaluating model performance
+    ├── output_utils.py                   # Utilities for handling output processing
+    ├── __pycache__                       # Cached bytecode (autogenerated)
+    │   ├── api.cpython-38.pyc            # Cached bytecode of api.py
+    │   ├── draw.cpython-38.pyc           # Cached bytecode of draw.py
+    │   ├── ext.cpython-38.pyc            # Cached bytecode of ext.py
+    │   ├── __init__.cpython-38.pyc       # Cached bytecode of __init__.py
+    │   ├── metrics.cpython-38.pyc        # Cached bytecode of metrics.py
+    │   ├── output_utils.cpython-38.pyc   # Cached bytecode of output_utils.py
+    │   ├── st.cpython-38.pyc             # Cached bytecode of st.py
+    │   └── utils.cpython-38.pyc          # Cached bytecode of utils.py
+    ├── st.py                             # Utility for style transfer
+    ├── tb_visualizer.py                  # TensorBoard visualizer utility
+    └── utils.py                          # General utilities for the project
+
 ```
 
 ## **Dependencies**
@@ -208,7 +295,10 @@ Contributions are welcome! Please open an issue or submit a pull request on GitH
 This project is built upon the efforts of the following repositories:
 
 - Recipe Generation from Food Image by navassherif98
+- [Recipe Generation from Food Image by navassherif98](https://github.com/navassherif98)
 - Chef Transformer by chef-transformer
+- [Chef Transformer by chef-transformer](https://github.com/chef-transformer)
+
 
 ## **License**
 
