@@ -224,5 +224,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 For any inquiries or support, please contact:
 
 - Ganesh Adimalupu
-- Email: your_email@example.com
+- Email: Ganeshjohn253@gmail.com
 - GitHub: GaneshAdimalupu
